@@ -1,16 +1,13 @@
 ﻿using Grpc.Core;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Transaction;
 
 namespace server
 {
     internal class Program
     {
-        const int Port = 50051;
+        const int Port = 50052;
 
         static void Main(string[] args)
         {
@@ -20,6 +17,7 @@ namespace server
             {
                 server = new Server()
                 {
+                    Services = { TransactionService.BindService(new TransactionServiceImpl())},
                     Ports = { new ServerPort("localhost", Port, SslServerCredentials.Insecure) }
                 };
 

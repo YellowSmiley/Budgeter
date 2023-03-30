@@ -12,6 +12,87 @@ namespace Transaction {
   {
     static readonly string __ServiceName = "transaction.TransactionService";
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
+    {
+      #if !GRPC_DISABLE_PROTOBUF_BUFFER_SERIALIZATION
+      if (message is global::Google.Protobuf.IBufferMessage)
+      {
+        context.SetPayloadLength(message.CalculateSize());
+        global::Google.Protobuf.MessageExtensions.WriteTo(message, context.GetBufferWriter());
+        context.Complete();
+        return;
+      }
+      #endif
+      context.Complete(global::Google.Protobuf.MessageExtensions.ToByteArray(message));
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static class __Helper_MessageCache<T>
+    {
+      public static readonly bool IsBufferMessage = global::System.Reflection.IntrospectionExtensions.GetTypeInfo(typeof(global::Google.Protobuf.IBufferMessage)).IsAssignableFrom(typeof(T));
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static T __Helper_DeserializeMessage<T>(grpc::DeserializationContext context, global::Google.Protobuf.MessageParser<T> parser) where T : global::Google.Protobuf.IMessage<T>
+    {
+      #if !GRPC_DISABLE_PROTOBUF_BUFFER_SERIALIZATION
+      if (__Helper_MessageCache<T>.IsBufferMessage)
+      {
+        return parser.ParseFrom(context.PayloadAsReadOnlySequence());
+      }
+      #endif
+      return parser.ParseFrom(context.PayloadAsNewBuffer());
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.CreateTransactionRequest> __Marshaller_transaction_CreateTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.CreateTransactionRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.CreateTransactionResponse> __Marshaller_transaction_CreateTransactionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.CreateTransactionResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.ReadTransactionRequest> __Marshaller_transaction_ReadTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.ReadTransactionRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.ReadTransactionResponse> __Marshaller_transaction_ReadTransactionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.ReadTransactionResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.UpdateTransactionRequest> __Marshaller_transaction_UpdateTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.UpdateTransactionRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.UpdateTransactionResponse> __Marshaller_transaction_UpdateTransactionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.UpdateTransactionResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.DeleteTransactionRequest> __Marshaller_transaction_DeleteTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.DeleteTransactionRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.DeleteTransactionResponse> __Marshaller_transaction_DeleteTransactionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.DeleteTransactionResponse.Parser));
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Transaction.CreateTransactionRequest, global::Transaction.CreateTransactionResponse> __Method_CreateTransaction = new grpc::Method<global::Transaction.CreateTransactionRequest, global::Transaction.CreateTransactionResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateTransaction",
+        __Marshaller_transaction_CreateTransactionRequest,
+        __Marshaller_transaction_CreateTransactionResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Transaction.ReadTransactionRequest, global::Transaction.ReadTransactionResponse> __Method_ReadTransaction = new grpc::Method<global::Transaction.ReadTransactionRequest, global::Transaction.ReadTransactionResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ReadTransaction",
+        __Marshaller_transaction_ReadTransactionRequest,
+        __Marshaller_transaction_ReadTransactionResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Transaction.UpdateTransactionRequest, global::Transaction.UpdateTransactionResponse> __Method_UpdateTransaction = new grpc::Method<global::Transaction.UpdateTransactionRequest, global::Transaction.UpdateTransactionResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateTransaction",
+        __Marshaller_transaction_UpdateTransactionRequest,
+        __Marshaller_transaction_UpdateTransactionResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Transaction.DeleteTransactionRequest, global::Transaction.DeleteTransactionResponse> __Method_DeleteTransaction = new grpc::Method<global::Transaction.DeleteTransactionRequest, global::Transaction.DeleteTransactionResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteTransaction",
+        __Marshaller_transaction_DeleteTransactionRequest,
+        __Marshaller_transaction_DeleteTransactionResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -23,6 +104,30 @@ namespace Transaction {
     [grpc::BindServiceMethod(typeof(TransactionService), "BindService")]
     public abstract partial class TransactionServiceBase
     {
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Transaction.CreateTransactionResponse> CreateTransaction(global::Transaction.CreateTransactionRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Transaction.ReadTransactionResponse> ReadTransaction(global::Transaction.ReadTransactionRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Transaction.UpdateTransactionResponse> UpdateTransaction(global::Transaction.UpdateTransactionRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Transaction.DeleteTransactionResponse> DeleteTransaction(global::Transaction.DeleteTransactionRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Client for TransactionService</summary>
@@ -52,6 +157,86 @@ namespace Transaction {
       {
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.CreateTransactionResponse CreateTransaction(global::Transaction.CreateTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateTransaction(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.CreateTransactionResponse CreateTransaction(global::Transaction.CreateTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CreateTransaction, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.CreateTransactionResponse> CreateTransactionAsync(global::Transaction.CreateTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateTransactionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.CreateTransactionResponse> CreateTransactionAsync(global::Transaction.CreateTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CreateTransaction, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.ReadTransactionResponse ReadTransaction(global::Transaction.ReadTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ReadTransaction(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.ReadTransactionResponse ReadTransaction(global::Transaction.ReadTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ReadTransaction, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.ReadTransactionResponse> ReadTransactionAsync(global::Transaction.ReadTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ReadTransactionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.ReadTransactionResponse> ReadTransactionAsync(global::Transaction.ReadTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ReadTransaction, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.UpdateTransactionResponse UpdateTransaction(global::Transaction.UpdateTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateTransaction(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.UpdateTransactionResponse UpdateTransaction(global::Transaction.UpdateTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateTransaction, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.UpdateTransactionResponse> UpdateTransactionAsync(global::Transaction.UpdateTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateTransactionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.UpdateTransactionResponse> UpdateTransactionAsync(global::Transaction.UpdateTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateTransaction, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.DeleteTransactionResponse DeleteTransaction(global::Transaction.DeleteTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteTransaction(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Transaction.DeleteTransactionResponse DeleteTransaction(global::Transaction.DeleteTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteTransaction, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.DeleteTransactionResponse> DeleteTransactionAsync(global::Transaction.DeleteTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteTransactionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Transaction.DeleteTransactionResponse> DeleteTransactionAsync(global::Transaction.DeleteTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteTransaction, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override TransactionServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -65,7 +250,11 @@ namespace Transaction {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static grpc::ServerServiceDefinition BindService(TransactionServiceBase serviceImpl)
     {
-      return grpc::ServerServiceDefinition.CreateBuilder().Build();
+      return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_CreateTransaction, serviceImpl.CreateTransaction)
+          .AddMethod(__Method_ReadTransaction, serviceImpl.ReadTransaction)
+          .AddMethod(__Method_UpdateTransaction, serviceImpl.UpdateTransaction)
+          .AddMethod(__Method_DeleteTransaction, serviceImpl.DeleteTransaction).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -75,6 +264,10 @@ namespace Transaction {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, TransactionServiceBase serviceImpl)
     {
+      serviceBinder.AddMethod(__Method_CreateTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Transaction.CreateTransactionRequest, global::Transaction.CreateTransactionResponse>(serviceImpl.CreateTransaction));
+      serviceBinder.AddMethod(__Method_ReadTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Transaction.ReadTransactionRequest, global::Transaction.ReadTransactionResponse>(serviceImpl.ReadTransaction));
+      serviceBinder.AddMethod(__Method_UpdateTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Transaction.UpdateTransactionRequest, global::Transaction.UpdateTransactionResponse>(serviceImpl.UpdateTransaction));
+      serviceBinder.AddMethod(__Method_DeleteTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Transaction.DeleteTransactionRequest, global::Transaction.DeleteTransactionResponse>(serviceImpl.DeleteTransaction));
     }
 
   }
