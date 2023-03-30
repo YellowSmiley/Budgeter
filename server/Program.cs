@@ -1,4 +1,6 @@
 ﻿using Grpc.Core;
+using Grpc.Reflection;
+using Grpc.Reflection.V1Alpha;
 using System;
 using System.IO;
 using Transaction;
@@ -15,9 +17,14 @@ namespace server
 
             try
             {
+                var reflectionServiceTmpl = new ReflectionServiceImpl(TransactionService.Descriptor, ServerReflection.Descriptor);
+
                 server = new Server()
                 {
-                    Services = { TransactionService.BindService(new TransactionServiceImpl())},
+                    Services = { 
+                        TransactionService.BindService(new TransactionServiceImpl()),
+                        ServerReflection.BindService(reflectionServiceTmpl)
+                    },
                     Ports = { new ServerPort("localhost", Port, SslServerCredentials.Insecure) }
                 };
 

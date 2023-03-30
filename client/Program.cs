@@ -19,10 +19,10 @@ namespace client
 
             var client = new TransactionService.TransactionServiceClient(channel);
 
-            var newTransaction = CreateTransaction(client);
-
-            DeleteTransaction(client, newTransaction);
+            //var newTransaction = CreateTransaction(client);
+            //DeleteTransaction(client, newTransaction);
             //UpdateTransaction(client, newTransaction);
+            await ListTransaction(client);
 
             channel.ShutdownAsync().Wait();
             Console.ReadKey();
@@ -95,6 +95,16 @@ namespace client
             catch (RpcException e)
             {
                 Console.WriteLine(e.Status.Detail);
+            }
+        }
+
+        private static async Task ListTransaction(TransactionService.TransactionServiceClient client)
+        {
+            var response = client.ListTransactions(new ListTransactionRequest() { });
+
+            while (await response.ResponseStream.MoveNext())
+            {
+                Console.WriteLine(response.ResponseStream.Current.Transaction.ToString());
             }
         }
     }

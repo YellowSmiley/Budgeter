@@ -104,5 +104,28 @@ namespace server
                 TransactionId = transactionId
             };
         }
+
+        public override async Task ListTransactions(ListTransactionRequest request, IServerStreamWriter<ListTransactionResponse> responseStream, ServerCallContext context)
+        {
+            var filter = new FilterDefinitionBuilder<BsonDocument>().Empty;
+
+            var result = mongoCollection.Find(filter);
+
+            foreach (var item in result.ToList())
+            {
+                await responseStream.WriteAsync(new ListTransactionResponse()
+                {
+                    Transaction = new Transaction.Transaction()
+                    {
+                        Id = item.GetValue("_id").ToString(),
+                        Amount = item.GetValue("amount").ToDouble(),
+                        Bank = item.GetValue("bank").ToString(),
+                        Date = item.GetValue("date").ToString(),
+                        Name = item.GetValue("name").ToString(),
+                        PersonId = item.GetValue("person_id").ToString(),
+                    }
+                });
+            }
+        }
     }
 }

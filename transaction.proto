@@ -42,9 +42,16 @@ message DeleteTransactionResponse {
 	string transaction_id = 1;
 }
 
+message ListTransactionRequest {}
+
+message ListTransactionResponse {
+	Transaction transaction = 1;
+}
+
 service TransactionService {
 	rpc CreateTransaction (CreateTransactionRequest) returns (CreateTransactionResponse) {}
 	rpc ReadTransaction (ReadTransactionRequest) returns (ReadTransactionResponse) {}
 	rpc UpdateTransaction (UpdateTransactionRequest) returns (UpdateTransactionResponse) {}
 	rpc DeleteTransaction (DeleteTransactionRequest) returns (DeleteTransactionResponse) {}
+	rpc ListTransactions (ListTransactionRequest) returns (stream ListTransactionResponse) {}
 }

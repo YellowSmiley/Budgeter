@@ -61,6 +61,10 @@ namespace Transaction {
     static readonly grpc::Marshaller<global::Transaction.DeleteTransactionRequest> __Marshaller_transaction_DeleteTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.DeleteTransactionRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Transaction.DeleteTransactionResponse> __Marshaller_transaction_DeleteTransactionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.DeleteTransactionResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.ListTransactionRequest> __Marshaller_transaction_ListTransactionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.ListTransactionRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Transaction.ListTransactionResponse> __Marshaller_transaction_ListTransactionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Transaction.ListTransactionResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Transaction.CreateTransactionRequest, global::Transaction.CreateTransactionResponse> __Method_CreateTransaction = new grpc::Method<global::Transaction.CreateTransactionRequest, global::Transaction.CreateTransactionResponse>(
@@ -94,6 +98,14 @@ namespace Transaction {
         __Marshaller_transaction_DeleteTransactionRequest,
         __Marshaller_transaction_DeleteTransactionResponse);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Transaction.ListTransactionRequest, global::Transaction.ListTransactionResponse> __Method_ListTransactions = new grpc::Method<global::Transaction.ListTransactionRequest, global::Transaction.ListTransactionResponse>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "ListTransactions",
+        __Marshaller_transaction_ListTransactionRequest,
+        __Marshaller_transaction_ListTransactionResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -124,6 +136,12 @@ namespace Transaction {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Transaction.DeleteTransactionResponse> DeleteTransaction(global::Transaction.DeleteTransactionRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task ListTransactions(global::Transaction.ListTransactionRequest request, grpc::IServerStreamWriter<global::Transaction.ListTransactionResponse> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -237,6 +255,16 @@ namespace Transaction {
       {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteTransaction, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncServerStreamingCall<global::Transaction.ListTransactionResponse> ListTransactions(global::Transaction.ListTransactionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListTransactions(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncServerStreamingCall<global::Transaction.ListTransactionResponse> ListTransactions(global::Transaction.ListTransactionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_ListTransactions, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override TransactionServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -254,7 +282,8 @@ namespace Transaction {
           .AddMethod(__Method_CreateTransaction, serviceImpl.CreateTransaction)
           .AddMethod(__Method_ReadTransaction, serviceImpl.ReadTransaction)
           .AddMethod(__Method_UpdateTransaction, serviceImpl.UpdateTransaction)
-          .AddMethod(__Method_DeleteTransaction, serviceImpl.DeleteTransaction).Build();
+          .AddMethod(__Method_DeleteTransaction, serviceImpl.DeleteTransaction)
+          .AddMethod(__Method_ListTransactions, serviceImpl.ListTransactions).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -268,6 +297,7 @@ namespace Transaction {
       serviceBinder.AddMethod(__Method_ReadTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Transaction.ReadTransactionRequest, global::Transaction.ReadTransactionResponse>(serviceImpl.ReadTransaction));
       serviceBinder.AddMethod(__Method_UpdateTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Transaction.UpdateTransactionRequest, global::Transaction.UpdateTransactionResponse>(serviceImpl.UpdateTransaction));
       serviceBinder.AddMethod(__Method_DeleteTransaction, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Transaction.DeleteTransactionRequest, global::Transaction.DeleteTransactionResponse>(serviceImpl.DeleteTransaction));
+      serviceBinder.AddMethod(__Method_ListTransactions, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Transaction.ListTransactionRequest, global::Transaction.ListTransactionResponse>(serviceImpl.ListTransactions));
     }
 
   }
