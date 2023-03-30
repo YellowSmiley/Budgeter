@@ -16,7 +16,7 @@ message CreateTransactionRequest {
 }
 
 message CreateTransactionResponse {
-	Transaction transaction = 1
+	Transaction transaction = 1;
 }
 
 service TransactionService {}
