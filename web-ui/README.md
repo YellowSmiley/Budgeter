@@ -4,6 +4,8 @@ Budgeter is a simple budgeting app that allows you to track your spending and in
 
 The web-ui client is written in TypeScript and uses React 18, Node 18, ts-proto and nice-grpc and was bootstrapped with Vite react-ts template.
 
+See [nice-grpc](https://github.com/deeplay-io/nice-grpc/tree/master/packages/nice-grpc-web#preparing-the-server) for more information on setting up the protos/grpc.
+
 ## Getting Started
 
 ### Prerequisites

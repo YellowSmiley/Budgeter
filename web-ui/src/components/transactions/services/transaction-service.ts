@@ -7,7 +7,7 @@ import {
 //
 // const getConnection = () => {
 const channel = createChannel(
-  "localhost:50052",
+  "localhost:8080",
   ChannelCredentials.createInsecure()
 );
 
