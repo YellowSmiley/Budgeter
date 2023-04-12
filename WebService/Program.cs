@@ -19,7 +19,6 @@ app.UseGrpcWeb();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<TransactionService>().EnableGrpcWeb().RequireCors("AllowAll");
 });
 
