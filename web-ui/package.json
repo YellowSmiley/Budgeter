@@ -9,11 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "long": "^5.2.1",
     "nice-grpc-web": "^3.2.3",
     "protobufjs": "^7.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0",
     "sass": "^1.60.0"
   },
   "devDependencies": {

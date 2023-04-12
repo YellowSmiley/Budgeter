@@ -1,15 +1,16 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Transactions from "./components/transactions/Transactions";
+import AppRouter from "./components/app-router/AppRouter";
 
-const App = () => {
-  return (
+const App = () => (
+  <BrowserRouter>
     <div className="App">
-      <header className="navbar">Budgeter</header>
-      <main className="main-content">
-        <Transactions />
+      <header>Budgeter</header>
+      <main>
+        <AppRouter />
       </main>
     </div>
-  );
-};
+  </BrowserRouter>
+);
 
 export default App;
