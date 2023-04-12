@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "long": "^5.2.1",
-    "nice-grpc": "^2.1.4",
+    "nice-grpc-web": "^3.2.3",
     "protobufjs": "^7.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

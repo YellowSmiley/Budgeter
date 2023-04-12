@@ -21,5 +21,11 @@ Run `npm run dev` to start the web-ui client.
 Run the following in PowerShell, from the `../Budgeter` directory, to generate `.ts` files from the `.proto` files, in `./protos`:
 
 ```
-protoc --plugin=protoc-gen-ts_proto=.\web-ui\node_modules\.bin\protoc-gen-ts_proto.cmd --ts_proto_out=./web-ui/src/protos --ts_proto_opt="outputServices=nice-grpc,outputServices=generic-definitions,useExactTypes=false" --proto_path=./protos/ ./protos/transaction.proto
+protoc --plugin=protoc-gen-ts_proto=.\web-ui\node_modules\.bin\protoc-gen-ts_proto.cmd --ts_proto_out=./web-ui/src/protos --ts_proto_opt="outputServices=nice-grpc,outputServices=generic-definitions,useExactTypes=false" --proto_path=./WebService/protos/ ./WebService/protos/transaction.proto
+```
+
+Or
+
+```
+protoc --plugin=protoc-gen-ts_proto=.\web-ui\node_modules\.bin\protoc-gen-ts_proto.cmd --ts_proto_out=./web-ui/src/protos --ts_proto_opt="outputServices=nice-grpc,outputServices=generic-definitions,useExactTypes=false" --proto_path=./WebService/protos/ ./WebService/protos/greet.proto
 ```

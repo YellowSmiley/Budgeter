@@ -1,20 +1,15 @@
-import { ChannelCredentials, createChannel, createClient } from "nice-grpc";
+import { FetchTransport, createChannel, createClient } from "nice-grpc-web";
+
 import {
   Transaction,
-  TransactionServiceClient,
-  TransactionServiceDefinition,
+  TransactorClient,
+  TransactorDefinition,
 } from "../../../protos/transaction";
 //
 // const getConnection = () => {
-const channel = createChannel(
-  "localhost:8080",
-  ChannelCredentials.createInsecure()
-);
+const channel = createChannel("https://localhost:7234", FetchTransport());
 
-const client: TransactionServiceClient = createClient(
-  TransactionServiceDefinition,
-  channel
-);
+const client: TransactorClient = createClient(TransactorDefinition, channel);
 //   return { channel, client };
 // };
 

@@ -741,10 +741,10 @@ export const ListTransactionResponse = {
   },
 };
 
-export type TransactionServiceDefinition = typeof TransactionServiceDefinition;
-export const TransactionServiceDefinition = {
-  name: "TransactionService",
-  fullName: "transaction.TransactionService",
+export type TransactorDefinition = typeof TransactorDefinition;
+export const TransactorDefinition = {
+  name: "Transactor",
+  fullName: "transaction.Transactor",
   methods: {
     createTransaction: {
       name: "CreateTransaction",
@@ -789,7 +789,7 @@ export const TransactionServiceDefinition = {
   },
 } as const;
 
-export interface TransactionServiceImplementation<CallContextExt = {}> {
+export interface TransactorServiceImplementation<CallContextExt = {}> {
   createTransaction(
     request: CreateTransactionRequest,
     context: CallContext & CallContextExt,
@@ -812,7 +812,7 @@ export interface TransactionServiceImplementation<CallContextExt = {}> {
   ): ServerStreamingMethodResult<DeepPartial<ListTransactionResponse>>;
 }
 
-export interface TransactionServiceClient<CallOptionsExt = {}> {
+export interface TransactorClient<CallOptionsExt = {}> {
   createTransaction(
     request: DeepPartial<CreateTransactionRequest>,
     options?: CallOptions & CallOptionsExt,

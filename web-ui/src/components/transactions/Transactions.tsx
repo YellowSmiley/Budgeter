@@ -4,18 +4,22 @@ import {
   listTransactions,
 } from "./services/transaction-service";
 import { Transaction } from "../../protos/transaction";
+import { sayHello } from "./services/greet-service";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [helloWorld, setHelloWorld] = useState<string>();
 
   const fetchData = async () => {
     try {
-      const res = await listTransactions();
-      setTransactions(res);
-      // const res = await getTransaction("64257438796887314eef6970");
-      // if (res) {
-      //   setTransactions([res]);
-      // }
+      // const res = await listTransactions();
+      // setTransactions(res);
+      const greeting = await sayHello();
+      setHelloWorld(greeting);
+      const res = await getTransaction("64257438796887314eef6970");
+      if (res) {
+        setTransactions([res]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -28,6 +32,7 @@ const Transactions = () => {
   return (
     <div>
       <h2>Transactions</h2>
+      <p>Greeting: {helloWorld}</p>
       <table>
         <thead>
           <tr>
