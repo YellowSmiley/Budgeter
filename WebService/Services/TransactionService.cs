@@ -48,6 +48,7 @@ namespace WebService.Services
 
             Transaction transaction = new Transaction()
             {
+                Id = result.GetValue("_id").AsObjectId.ToString(),
                 Amount = result.GetValue("amount").AsDouble,
                 Bank = result.GetValue("bank").AsString,
                 Date = result.GetValue("date").AsString,

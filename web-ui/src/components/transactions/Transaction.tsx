@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Paths } from "../app-router/paths";
 import PageHeader from "../shared/page-header/PageHeader";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
+  createTransaction,
   getTransaction,
   updateTransaction,
 } from "./services/transaction-service";
@@ -13,27 +14,47 @@ const Transaction = () => {
   let { id } = useParams();
   const navigate = useNavigate();
 
-  const [transaction, setTransaction] = useState<ITransaction>();
+  const [transaction, setTransaction] = useState<ITransaction>({
+    id: "",
+    name: "",
+    amount: 0,
+    personId: "",
+    date: "",
+    bank: "",
+  });
   const [loading, setLoading] = useState<boolean>(true);
   const [saving, setSaving] = useState<boolean>(false);
 
   const fetchData = async () => {
     try {
       setLoading(true);
-      if (!id) {
+      if (!id || id === ":id") {
         throw new Error("No ID provided");
       }
       const res = await getTransaction(id);
-      setTransaction(res);
-      setLoading(false);
+      if (res) {
+        setTransaction(res);
+      }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const isSubmitDisabled = useMemo(
+    () =>
+      !transaction.amount ||
+      !transaction.name ||
+      !transaction.personId ||
+      !transaction.date ||
+      !transaction.bank,
+    [transaction]
+  );
 
   return (
     <div className="Transaction">
@@ -45,81 +66,83 @@ const Transaction = () => {
           <div>
             <label htmlFor="name">Name</label>
             <input
+              className={!transaction?.name ? "error" : ""}
               type="text"
               id="name"
               value={transaction?.name}
               onChange={(e) => {
-                if (transaction) {
-                  transaction.name = e.target.value;
-                  setTransaction(transaction);
-                }
+                const newTransaction = { ...transaction };
+                newTransaction.name = e.target.value;
+                setTransaction(newTransaction);
               }}
             />
           </div>
           <div>
             <label htmlFor="amount">Amount</label>
             <input
+              className={!transaction?.amount ? "error" : ""}
               type="number"
               id="amount"
               value={transaction?.amount}
               onChange={(e) => {
-                if (transaction) {
-                  transaction.amount = parseInt(e.target.value);
-                  setTransaction(transaction);
-                }
+                const newTransaction = { ...transaction };
+                newTransaction.amount = parseInt(e.target.value);
+                setTransaction(newTransaction);
               }}
             />
           </div>
           <div>
             <label htmlFor="person">Person</label>
             <input
+              className={!transaction?.personId ? "error" : ""}
               type="text"
               id="person"
               value={transaction?.personId}
               onChange={(e) => {
-                if (transaction) {
-                  transaction.personId = e.target.value;
-                  setTransaction(transaction);
-                }
+                const newTransaction = { ...transaction };
+                newTransaction.personId = e.target.value;
+                setTransaction(newTransaction);
               }}
             />
           </div>
           <div>
             <label htmlFor="day">Day</label>
             <input
+              className={!transaction?.date ? "error" : ""}
               type="number"
               id="day"
               value={transaction?.date}
               onChange={(e) => {
-                if (transaction) {
-                  transaction.date = e.target.value;
-                  setTransaction(transaction);
-                }
+                const newTransaction = { ...transaction };
+                newTransaction.date = e.target.value;
+                setTransaction(newTransaction);
               }}
             />
           </div>
           <div>
             <label htmlFor="bank">Bank</label>
             <input
+              className={!transaction?.bank ? "error" : ""}
               type="text"
               id="bank"
               value={transaction?.bank}
               onChange={(e) => {
-                if (transaction) {
-                  transaction.bank = e.target.value;
-                  setTransaction(transaction);
-                }
+                const newTransaction = { ...transaction };
+                newTransaction.bank = e.target.value;
+                setTransaction(newTransaction);
               }}
             />
           </div>
           <button
-            disabled={saving}
+            disabled={saving || isSubmitDisabled}
             onClick={async (e) => {
               try {
                 e.preventDefault();
                 setSaving(true);
-                if (transaction) {
+                if (transaction.id) {
                   await updateTransaction(transaction);
+                } else {
+                  await createTransaction(transaction);
                 }
                 navigate(Paths.Transactions);
               } catch (error) {

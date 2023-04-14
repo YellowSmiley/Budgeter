@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { listTransactions } from "./services/transaction-service";
+import {
+  deleteTransaction,
+  listTransactions,
+} from "./services/transaction-service";
 import { Transaction } from "../../protos/transaction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,13 +23,14 @@ const Transactions = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const fetchData = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const res = await listTransactions();
       setTransactions(res);
-      setLoading(false);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,7 +54,7 @@ const Transactions = () => {
               <button
                 className="primary"
                 onClick={() => {
-                  navigate(generatePath(Paths.Transaction, { id: "" }));
+                  navigate(Paths.Transaction);
                 }}
               >
                 <FontAwesomeIcon icon={faPlusSquare} />
@@ -85,8 +89,14 @@ const Transactions = () => {
                   </button>
                   <button
                     className="danger"
-                    onClick={() => {
-                      // TODO
+                    onClick={async () => {
+                      try {
+                        setLoading(true);
+                        await deleteTransaction(transaction.id);
+                        await fetchData();
+                      } catch (error) {
+                        console.error(error);
+                      }
                     }}
                   >
                     <FontAwesomeIcon icon={faTrashCan} />
