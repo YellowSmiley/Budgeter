@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Paths } from "../../app-router/paths";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import { Paths } from "../../../components/app-router/paths";
 
 import "./PageHeader.scss";
 

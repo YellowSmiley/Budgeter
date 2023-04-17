@@ -1,14 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Paths } from "../app-router/paths";
-import PageHeader from "../shared/page-header/PageHeader";
 import { useState, useEffect, useMemo } from "react";
+import Loading from "../../shared/components/loading/Loading";
+import PageHeader from "../../shared/components/page-header/PageHeader";
 import {
-  createTransaction,
   getTransaction,
   updateTransaction,
-} from "./services/transaction-service";
+  createTransaction,
+} from "../../shared/services/transaction-service";
 import { Transaction as ITransaction } from "../../protos/transaction";
-import Loading from "../shared/loading/Loading";
 
 const Transaction = () => {
   let { id } = useParams();
@@ -78,7 +78,7 @@ const Transaction = () => {
             />
           </div>
           <div>
-            <label htmlFor="amount">Amount</label>
+            <label htmlFor="amount">Amount (£)</label>
             <input
               className={!transaction?.amount ? "error" : ""}
               type="number"

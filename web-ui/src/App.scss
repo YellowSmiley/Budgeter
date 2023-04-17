@@ -11,6 +11,26 @@
     padding: 1rem;
     font-size: 1.5rem;
   }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: $dark-secondary-colour;
+
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-right: 1rem;
+      }
+    }
+  }
+
   main {
     padding: 2rem;
     color: $dark-text-colour;
@@ -28,6 +48,7 @@
     &.danger {
       color: $light-danger;
     }
+
     &.primary {
       color: $light-primary;
     }
@@ -43,9 +64,11 @@
     width: 100%;
     max-width: 40rem;
     margin: 0 auto;
+
     div {
       display: flex;
       flex-direction: column;
+
       label {
         margin-bottom: 0.5rem;
       }
@@ -55,6 +78,7 @@
         padding: 0.5rem;
         border: 1px solid $dark-text-colour;
         border-radius: 4px;
+
         &.error {
           border-color: $dark-danger;
         }
@@ -76,6 +100,7 @@
       color: $light-text-colour;
       background-color: $light-primary-colour;
     }
+
     main {
       color: $light-text-colour;
       background-color: $light-secondary-colour;

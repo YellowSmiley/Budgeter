@@ -1,8 +1,4 @@
 import { useEffect, useState } from "react";
-import {
-  deleteTransaction,
-  listTransactions,
-} from "./services/transaction-service";
 import { Transaction } from "../../protos/transaction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,7 +10,12 @@ import { generatePath, useNavigate } from "react-router-dom";
 import { Paths } from "../app-router/paths";
 
 import "./styles/Transactions.scss";
-import PageHeader from "../shared/page-header/PageHeader";
+import Loading from "../../shared/components/loading/Loading";
+import PageHeader from "../../shared/components/page-header/PageHeader";
+import {
+  listTransactions,
+  deleteTransaction,
+} from "../../shared/services/transaction-service";
 
 const Transactions = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const Transactions = () => {
           <tr>
             <th>Transaction ID</th>
             <th>Name</th>
-            <th>Amount</th>
+            <th>Amount (£)</th>
             <th>Person</th>
             <th>Day</th>
             <th>Bank</th>
@@ -65,7 +66,9 @@ const Transactions = () => {
         <tbody>
           {loading ? (
             <tr>
-              <td colSpan={7}>Loading...</td>
+              <td colSpan={7}>
+                <Loading />
+              </td>
             </tr>
           ) : (
             transactions.map((transaction) => (
