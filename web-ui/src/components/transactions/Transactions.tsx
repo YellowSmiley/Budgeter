@@ -9,7 +9,6 @@ import {
 import { generatePath, useNavigate } from "react-router-dom";
 import { Paths } from "../app-router/paths";
 
-import "./styles/Transactions.scss";
 import Loading from "../../shared/components/loading/Loading";
 import PageHeader from "../../shared/components/page-header/PageHeader";
 import {

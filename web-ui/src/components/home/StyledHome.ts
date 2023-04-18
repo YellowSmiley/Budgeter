@@ -1,30 +1,30 @@
-@import "../../index.scss";
+import styled from "styled-components";
 
-.Home {
-  &_dashboard {
+export const StyledHome = styled.div`
+  .dashboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 1rem;
 
-    &_item {
+    .item {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: $dark-primary-colour;
+      background-color: ${(props) => props.theme.colors.primary};
       padding: 2rem;
 
-      &_title {
+      .title {
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 0.5rem;
       }
 
-      &_value {
+      .value {
         font-size: 2rem;
         font-weight: 600;
       }
     }
   }
-}
+`;

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./Home.scss";
 import PageHeader from "../../shared/components/page-header/PageHeader";
 import { listTransactions } from "../../shared/services/transaction-service";
 import Loading from "../../shared/components/loading/Loading";
@@ -10,6 +9,7 @@ import {
   totalIncome,
 } from "../../shared/utils/dashboard";
 import { BankAmount, PersonAmount } from "../../shared/types/dashboard";
+import { StyledHome } from "./StyledHome";
 
 const Home = () => {
   const [bankAmounts, setBankAmounts] = useState<BankAmount[]>([]);
@@ -38,35 +38,35 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="Home">
+    <StyledHome>
       <PageHeader text="Home" />
       {loading ? (
         <Loading />
       ) : (
-        <div className="Home_dashboard">
+        <div className="dashboard">
           {bankAmounts.map((b) => (
-            <div className="Home_dashboard_item">
-              <div className="Home_dashboard_item_title">{`Total ${b.bank} amount`}</div>
-              <div className="Home_dashboard_item_value">{b.amount}</div>
+            <div className="item">
+              <div className="title">{`Total ${b.bank} amount`}</div>
+              <div className="value">{b.amount}</div>
             </div>
           ))}
-          <div className="Home_dashboard_item">
-            <div className="Home_dashboard_item_title">Total Expenditure</div>
-            <div className="Home_dashboard_item_value">{expenditure}</div>
+          <div className="item">
+            <div className="title">Total Expenditure</div>
+            <div className="value">{expenditure}</div>
           </div>
-          <div className="Home_dashboard_item">
-            <div className="Home_dashboard_item_title">Total Income</div>
-            <div className="Home_dashboard_item_value">{income}</div>
+          <div className="item">
+            <div className="title">Total Income</div>
+            <div className="value">{income}</div>
           </div>
           {personAmounts.map((p) => (
-            <div className="Home_dashboard_item">
-              <div className="Home_dashboard_item_title">{`Discretionary income for ${p.personId}`}</div>
-              <div className="Home_dashboard_item_value">{p.amount}</div>
+            <div className="item">
+              <div className="title">{`Discretionary income for ${p.personId}`}</div>
+              <div className="value">{p.amount}</div>
             </div>
           ))}
         </div>
       )}
-    </div>
+    </StyledHome>
   );
 };
 

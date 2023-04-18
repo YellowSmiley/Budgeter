@@ -1,14 +1,11 @@
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { StyledLoading } from "./StyledLoading";
 
-import "./Loading.scss";
-
-const Loading = () => {
-  return (
-    <div className="loading">
-      <FontAwesomeIcon icon={faSpinner} spin />
-    </div>
-  );
-};
+const Loading = () => (
+  <StyledLoading>
+    <FontAwesomeIcon icon={faSpinner} spin />
+  </StyledLoading>
+);
 
 export default Loading;

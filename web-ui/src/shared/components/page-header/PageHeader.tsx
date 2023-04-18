@@ -2,8 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { Paths } from "../../../components/app-router/paths";
-
-import "./PageHeader.scss";
+import { StyledPageHeader } from "./StyledPageHeader";
 
 interface IProps {
   text: string;
@@ -14,7 +13,7 @@ const PageHeader = ({ text, path }: IProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="PageHeader">
+    <StyledPageHeader>
       {path && (
         <button
           className="primary"
@@ -26,7 +25,7 @@ const PageHeader = ({ text, path }: IProps) => {
         </button>
       )}
       {text}
-    </div>
+    </StyledPageHeader>
   );
 };
 
