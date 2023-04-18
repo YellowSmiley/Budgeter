@@ -14,19 +14,22 @@
 
   nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 1rem;
     background-color: $dark-secondary-colour;
 
-    ul {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .navLink {
+      color: $dark-text-colour;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 4px;
 
-      li {
-        margin-right: 1rem;
+      &.active {
+        background-color: $dark-primary-colour;
+      }
+
+      &.pending {
+        background-color: $dark-primary;
       }
     }
   }

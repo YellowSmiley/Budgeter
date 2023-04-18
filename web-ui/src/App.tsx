@@ -1,6 +1,7 @@
 import { BrowserRouter, NavLink } from "react-router-dom";
 import "./App.scss";
 import AppRouter from "./components/app-router/AppRouter";
+import classNames from "classnames";
 
 const App = () => (
   <BrowserRouter>
@@ -10,21 +11,25 @@ const App = () => (
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
+            classNames("navLink", {
+              active: isActive,
+              pending: isPending,
+            })
           }
         >
           Home
         </NavLink>
-        ;
         <NavLink
           to="/transactions"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
+            classNames("navLink", {
+              active: isActive,
+              pending: isPending,
+            })
           }
         >
           Transactions
         </NavLink>
-        ;
       </nav>
       <main>
         <AppRouter />

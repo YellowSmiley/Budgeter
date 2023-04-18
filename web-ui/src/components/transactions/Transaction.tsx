@@ -44,7 +44,7 @@ const Transaction = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   const isSubmitDisabled = useMemo(
     () =>

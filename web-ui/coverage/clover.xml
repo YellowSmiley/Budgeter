@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1681810444736" clover="3.2.0">
+  <project timestamp="1681810444736" name="All files">
+    <metrics statements="24" coveredstatements="24" conditionals="8" coveredconditionals="8" methods="10" coveredmethods="10" elements="42" coveredelements="42" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
+    <file name="dashboard.ts" path="C:\code\Budgeter\web-ui\src\shared\utils\dashboard.ts">
+      <metrics statements="24" coveredstatements="24" conditionals="8" coveredconditionals="8" methods="10" coveredmethods="10"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="3" type="stmt"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="30" count="1" type="stmt"/>
+      <line num="31" count="2" type="stmt"/>
+      <line num="33" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="42" count="1" type="stmt"/>
+      <line num="43" count="2" type="stmt"/>
+      <line num="45" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="53" count="1" type="stmt"/>
+      <line num="54" count="2" type="stmt"/>
+      <line num="55" count="2" type="stmt"/>
+      <line num="56" count="3" type="stmt"/>
+      <line num="57" count="3" type="stmt"/>
+      <line num="59" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="60" count="1" type="stmt"/>
+      <line num="62" count="2" type="stmt"/>
+      <line num="68" count="2" type="stmt"/>
+    </file>
+  </project>
+</coverage>
